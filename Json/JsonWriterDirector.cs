@@ -64,7 +64,7 @@ namespace Bolt {
         JsonObject obj = new JsonObject();
         JsonObjectSchema schema = JsonObjectSchemaCache.GetSchema(this._value.GetType());
         foreach(KeyValuePair<string, PropertyInfo> kvp in schema.JsonProperties) {
-          writer = new JsonWriterDirector(kvp.Value);
+          writer = new JsonWriterDirector(kvp.Value.GetValue(this._value));
           obj.Add(kvp.Key, writer.BuildToken());
         }
         return obj;
