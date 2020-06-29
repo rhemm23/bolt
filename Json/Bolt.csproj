@@ -6,6 +6,9 @@
     <RepositoryUrl>https://github.com/rhemm23/bolt</RepositoryUrl>
     <Description>Fast and simple library for json serializing and deserializing</Description>
     <PackageTags>JSON</PackageTags>
+    <Company>Bolt</Company>
+    <Authors>Ryan Hemmila</Authors>
+    <Product />
   </PropertyGroup>
 
 </Project>

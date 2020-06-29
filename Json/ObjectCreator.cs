@@ -5,9 +5,9 @@ using System;
 
 namespace Bolt {
 
-  delegate object ObjectActivator(params object[] args);
+  internal delegate object ObjectActivator(params object[] args);
 
-  public static class ObjectCreator {
+  internal static class ObjectCreator {
     private static readonly ConcurrentDictionary<Type, ObjectActivator> objectActivators;
 
     static ObjectCreator() {
