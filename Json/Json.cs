@@ -40,39 +40,21 @@ namespace Bolt {
       }
     }
 
-    public static string Serialize<T>(T obj) {
-      return Serialize(typeof(T), obj);
-    }
-
-    public static string Serialize(Type type, object obj) {
+    public static string Serialize(object obj) {
       StringBuilder sb = new StringBuilder();
       JsonWriterDirector writer = new JsonWriterDirector(obj);
       writer.BuildToken().WriteJson(sb);
       return sb.ToString();
     }
 
-    public static bool TrySerialize<T>(T obj, out string json) {
+    public static bool TrySerialize(object obj, out string json) {
       string result;
-      if(TrySerialize(typeof(T), obj, out result)) {
+      if(TrySerialize(obj, out result)) {
         json = result;
         return true;
       } else {
         json = null;
         return false;
-      }
-    }
-
-    public static bool TrySerialize(Type type, object obj, out string json) {
-      try {
-        json = Serialize(type, obj);
-        return true;
-      } catch(Exception e) {
-        if(e is JsonSchemaException || e is JsonFormatException) {
-          json = null;
-          return false;
-        } else {
-          throw e;
-        }
       }
     }
   }

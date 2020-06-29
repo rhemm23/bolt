@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/rhemm23/bolt</RepositoryUrl>
+    <Description>Fast and simple library for json serializing and deserializing</Description>
+    <PackageTags>JSON</PackageTags>
   </PropertyGroup>
 
 </Project>
