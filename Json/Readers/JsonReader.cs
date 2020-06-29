@@ -1,4 +1,5 @@
 ﻿using Bolt.Models;
+using System.IO;
 
 namespace Bolt.Readers {
   internal abstract class JsonReader {
@@ -8,6 +9,19 @@ namespace Bolt.Readers {
       this._json = json;
     }
 
-    public abstract IJsonValue Read();
+    protected abstract IJsonValue ReadValue();
+
+    public IJsonValue Read() {
+      ReadWhitespace();
+      IJsonValue result = ReadValue();
+      ReadWhitespace();
+      return result;
+    }
+
+    protected virtual void ReadWhitespace() {
+      while(char.IsWhiteSpace((char)this._json.Peek())) {
+        this._json.Read();
+      }
+    }
   }
 }

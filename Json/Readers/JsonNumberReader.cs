@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Bolt.Models;
+using System.IO;
 
 namespace Bolt.Readers {
   internal class JsonNumberReader : JsonReader {
@@ -18,7 +19,7 @@ namespace Bolt.Readers {
       End
     }
 
-    public override IJsonValue Read() {
+    protected override IJsonValue ReadValue() {
       StringBuilder sb = new StringBuilder();
       States state = States.Start;
 

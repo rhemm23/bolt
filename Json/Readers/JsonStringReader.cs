@@ -1,6 +1,9 @@
-﻿using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
 using Bolt.Models;
+using System.IO;
 
+[assembly: InternalsVisibleTo("Test")]
 namespace Bolt.Readers {
   internal class JsonStringReader : JsonReader {
     public JsonStringReader(StringReader json) : base(json) { }
@@ -12,7 +15,7 @@ namespace Bolt.Readers {
       End
     }
 
-    public override IJsonValue Read() {
+    protected override IJsonValue ReadValue() {
       StringBuilder sb = new StringBuilder();
       States state = States.Start;
 

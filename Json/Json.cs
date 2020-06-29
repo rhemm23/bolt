@@ -1,5 +1,6 @@
 ﻿using Bolt.Readers;
 using System.Text;
+using System.IO;
 using System;
 
 namespace Bolt {

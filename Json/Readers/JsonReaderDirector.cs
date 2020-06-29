@@ -1,4 +1,5 @@
 ﻿using Bolt.Models;
+using System.IO;
 
 namespace Bolt.Readers {
   internal class JsonReaderDirector {

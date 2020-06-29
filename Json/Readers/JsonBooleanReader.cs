@@ -1,5 +1,6 @@
 ﻿using Bolt.Models;
 using System.Linq;
+using System.IO;
 
 namespace Bolt.Readers {
   internal class JsonBooleanReader : JsonReader {
@@ -8,7 +9,7 @@ namespace Bolt.Readers {
 
     public JsonBooleanReader(StringReader json) : base(json) { }
 
-    public override IJsonValue Read() {
+    protected override IJsonValue ReadValue() {
       if(this._json.Peek() == 't') {
         char[] buffer = new char[4];
         int readCount = this._json.Read(buffer, 0, 4);
