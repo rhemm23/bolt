@@ -9,19 +9,6 @@ namespace Bolt.Readers {
       this._json = json;
     }
 
-    protected abstract IJsonValue ReadValue();
-
-    public IJsonValue Read() {
-      ReadWhitespace();
-      IJsonValue result = ReadValue();
-      ReadWhitespace();
-      return result;
-    }
-
-    protected virtual void ReadWhitespace() {
-      while(char.IsWhiteSpace((char)this._json.Peek())) {
-        this._json.Read();
-      }
-    }
+    public abstract IJsonValue Read();
   }
 }

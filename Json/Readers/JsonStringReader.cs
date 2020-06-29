@@ -15,7 +15,7 @@ namespace Bolt.Readers {
       End
     }
 
-    protected override IJsonValue ReadValue() {
+    public override IJsonValue Read() {
       StringBuilder sb = new StringBuilder();
       States state = States.Start;
 

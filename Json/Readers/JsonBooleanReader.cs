@@ -9,7 +9,7 @@ namespace Bolt.Readers {
 
     public JsonBooleanReader(StringReader json) : base(json) { }
 
-    protected override IJsonValue ReadValue() {
+    public override IJsonValue Read() {
       if(this._json.Peek() == 't') {
         char[] buffer = new char[4];
         int readCount = this._json.Read(buffer, 0, 4);

@@ -1,4 +1,5 @@
-﻿using Bolt.Models;
+﻿using Bolt.Extensions;
+using Bolt.Models;
 using System.IO;
 
 namespace Bolt.Readers {
@@ -11,6 +12,7 @@ namespace Bolt.Readers {
 
     public IJsonValue ReadValue() {
       JsonReader reader;
+      this._json.ReadWhitespace();
       switch(this._json.Peek()) {
         case int digit when(digit >= 48 && digit <= 57):
         case 45:
@@ -41,7 +43,11 @@ namespace Bolt.Readers {
         default:
           throw new JsonFormatException("Expected to read a value");
       }
-      return reader.Read();
+
+      // Read value, then whitespace
+      IJsonValue val = reader.Read();
+      this._json.ReadWhitespace();
+      return val;
     }
   }
 }

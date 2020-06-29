@@ -1,4 +1,5 @@
-﻿using Bolt.Models;
+﻿using Bolt.Extensions;
+using Bolt.Models;
 using System.IO;
 
 namespace Bolt.Readers {
@@ -12,7 +13,7 @@ namespace Bolt.Readers {
       End
     }
 
-    protected override IJsonValue ReadValue() {
+    public override IJsonValue Read() {
       JsonReaderDirector director = new JsonReaderDirector(this._json);
       JsonStringReader stringReader = new JsonStringReader(this._json);
       JsonObject result = new JsonObject();
@@ -33,7 +34,7 @@ namespace Bolt.Readers {
             break;
 
           case States.ReadOpeningBracket:
-            ReadWhitespace();
+            this._json.ReadWhitespace();
             switch(this._json.Peek()) {
               case 125:
                 this._json.Read();
@@ -56,6 +57,7 @@ namespace Bolt.Readers {
 
               case 44:
                 this._json.Read();
+                this._json.ReadWhitespace();
                 ReadKeyValuePair(stringReader, director, result);
                 break;
 
@@ -73,6 +75,8 @@ namespace Bolt.Readers {
 
     private void ReadKeyValuePair(JsonStringReader keyReader, JsonReaderDirector director, JsonObject result) {
       JsonString key = (JsonString)keyReader.Read();
+
+      this._json.ReadWhitespace();
 
       // Assure colon between key/value
       if(this._json.Read() != 58) {

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\TestJsonString.cs" />
+    <Compile Include="Readers\TestJsonReaderDirector.cs" />
     <Compile Include="Readers\TestJsonStringReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

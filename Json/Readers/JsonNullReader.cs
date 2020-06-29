@@ -8,7 +8,7 @@ namespace Bolt.Readers {
 
     public JsonNullReader(StringReader json) : base(json) { }
 
-    protected override IJsonValue ReadValue() {
+    public override IJsonValue Read() {
       char[] buffer = new char[4];
       int readCount = this._json.Read(buffer, 0, 4);
       if(readCount == 4 && buffer.SequenceEqual(null_chars)) {
