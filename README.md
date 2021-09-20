@@ -8,7 +8,7 @@ Using the library is very simple
 
 For example:
 
-```C#
+```csharp
 using Bolt.Attributes;
 
 [JsonObject]
@@ -27,7 +27,7 @@ You can either specify the object key in the attribute constructor, or pass noth
 
 Then you can use the following methods to deserialize/serialize json:
 
-```C#
+```csharp
 using Bolt;
 
 public class Program {
